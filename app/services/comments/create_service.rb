@@ -1,5 +1,6 @@
 module Comments
   class CreateService
+
     def initialize(params:, movie:)
       @params = params
       @movie = movie
@@ -18,3 +19,4 @@ module Comments
     end
   end
 end
+

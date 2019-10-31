@@ -29,3 +29,4 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:signature, :content).merge!(user_id: current_user.id)
   end
 end
+

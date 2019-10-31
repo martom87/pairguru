@@ -4,3 +4,4 @@ FactoryBot.define do
     password { Faker::Internet.password }
   end
 end
+
