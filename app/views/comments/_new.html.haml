@@ -1,10 +1,12 @@
-
+%h3 Add Your Comment Below:
 .row
   .col-xs-12
-    =  simple_nested_form_for [movie, movie.comments.new] do |f|
+    =  simple_form_for [movie, movie.comments.new] do |f|
       .form-group
         .control-label.col-sm-2
-          = f.input :signature, error: false , required: true
           = f.input :content, error: false, required: true
+          = f.input :signature, error: false , required: true
+          .form-group
+            .center.col-sm-offset-1.col-sm-10
           = f.button :submit, class: "btn btn-primary"
 

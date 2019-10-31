@@ -1,10 +1,15 @@
-%h5 All Comments
-%table.table.table-hover
+%h3 Comments:
+%table.table{:border => 2}
+  %thead
+    %tr
+      %th Commented by:
+      %th Content:
+      %th Date:
+    %tbody
   - movie.comments.each do |comment|
     %tr
       %td= comment.signature
       %td= comment.content
-      %td= "Commented by: #{User.find(comment.user_id).email}"
+      %td= "#{comment.created_at}".chomp("UTC")
       %td
-        = link_to "Delete", movie_comment_path(movie_id: comment.movie.id, id: comment.id), method: :delete, data: {confirm: "The comment will be removed"}, class: "button btn btn-danger" if current_user == comment.user do
-          %button.btn.btn-outline-danger.btn_margin
+      = link_to "Delete", movie_comment_path(movie_id: comment.movie.id, id: comment.id), method: :delete, data: {confirm: "The comment will be removed"} if current_user == comment.user
