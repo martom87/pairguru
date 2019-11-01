@@ -2,3 +2,7 @@
   - if msg.is_a?(String)
     %div{class: "alert alert-#{name.to_s == 'notice' ? 'success' : 'danger'}"}
       = content_tag :div, msg, id: "flash_#{name}"
+:javascript
+  setTimeout(function(){
+    $('.alert').fadeOut();
+   }, 2000);

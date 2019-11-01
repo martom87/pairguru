@@ -1,36 +1,31 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
-    if comment.save
-      flash[:notice] = 'Comment was added!'
-      redirect_to movie_path(movie)
-    else
-      flash[:error] = 'You already added your comment!'
-      redirect_to movie_path(movie)
-    end
-
+    return redirect_to movie_path(movie), notice: "Comment was added!" if comment.save
+    redirect_to movie_path(movie), alert: "You already added your comment!"
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    comment.destroy
-    redirect_to movie_path(movie)
-    flash[:notice] = 'Comment was removed!'
+    find_comment.destroy
+    redirect_to movie_path(movie), notice: "Comment was removed!"
   end
 
   private
 
-
   def comment
-    Comments::CreateService.new(params: comment_params, user: current_user, movie: movie).call
+    @comment ||= Comments::CreateService.new(params: comment_params, movie: movie).call
   end
 
   def movie
-    Movie.find(params[:movie_id])
+    @movie ||= Movie.find(params[:movie_id])
+  end
+
+  def find_comment
+    @find_comment ||= Comment.find(params[:id])
   end
 
   def comment_params
-    params.require(:comment).permit(:signature, :content)
+    params.require(:comment).permit(:signature, :content).merge!(user_id: current_user.id)
   end
-
 end

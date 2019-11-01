@@ -12,4 +12,4 @@
       %td= comment.content
       %td= "#{comment.created_at}".chomp("UTC")
       %td
-      = link_to "Delete", movie_comment_path(movie_id: comment.movie.id, id: comment.id), method: :delete, data: {confirm: "The comment will be removed"} if current_user == comment.user
+        = link_to "Delete", movie_comment_path(movie_id: comment.movie.id, id: comment.id), method: :delete, data: {confirm: "The comment will be removed"}, class: "button btn.sm btn-danger" if current_user == comment.user

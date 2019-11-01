@@ -1,9 +1,7 @@
 module Comments
   class CreateService
-
-    def initialize(params:, user:, movie:)
+    def initialize(params:, movie:)
       @params = params
-      @user = user
       @movie = movie
     end
 
@@ -13,14 +11,10 @@ module Comments
 
     private
 
-    attr_accessor :params, :user, :movie
+    attr_accessor :params, :movie
 
     def create
-      comment = Comment.new(params)
-      comment.user = user
-      comment.movie = movie
-      comment
+      movie.comments.create(params)
     end
-
   end
 end
