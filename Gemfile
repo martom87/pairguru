@@ -13,8 +13,6 @@ gem "sass-rails"
 gem "simple_form", "~> 4.1"
 gem "sqlite3"
 gem "uglifier"
-gem 'simple_form', '~> 4.1'
-gem 'nested_form'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false

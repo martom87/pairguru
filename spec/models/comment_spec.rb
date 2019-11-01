@@ -18,5 +18,4 @@ RSpec.describe Comment, type: :model do
     it { should validate_presence_of(:content) }
     it { should validate_uniqueness_of(:user_id).scoped_to(:movie_id).with_message("You have already commented on this movie.") }
   end
-
 end
