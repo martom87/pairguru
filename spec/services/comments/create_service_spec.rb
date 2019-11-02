@@ -15,7 +15,6 @@ describe Comments::CreateService, type: :service do
                                            content: "super film",
                                            movie_id: movie.id)
       end
-
     end
   end
 end

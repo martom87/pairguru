@@ -9,7 +9,5 @@ FactoryBot.define do
     trait :with_date do
       created_at { 14.days.ago }
     end
-
-
   end
 end
