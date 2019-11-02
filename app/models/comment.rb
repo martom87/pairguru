@@ -5,4 +5,3 @@ class Comment < ApplicationRecord
   validates :signature, presence: true
   validates :user_id, uniqueness: { scope: :movie_id, message: "You have already commented on this movie." }
 end
-

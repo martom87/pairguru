@@ -1,12 +1,12 @@
 require "rails_helper"
 
 describe Comments::CreateService, type: :service do
-  subject {described_class.new(params: params, movie: movie).call}
+  subject { described_class.new(params: params, movie: movie).call }
 
-  let (:params) {{"signature" => signature, "content" => content}}
-  let (:signature) {"martom"}
-  let (:content) {"super film"}
-  let (:movie) {build_stubbed(:movie)}
+  let (:params) { { "signature" => signature, "content" => content } }
+  let (:signature) { "martom" }
+  let (:content) { "super film" }
+  let (:movie) { build_stubbed(:movie) }
 
   context "when the comment object is created" do
     describe "#call" do
